@@ -18,12 +18,12 @@ app.use(session({
   store:new RedisStore(),
   secret:'heyitsmeurbrother'
 }))
-app.use(routes)
-
 app.use((req,res,next)=>{
     app.locals.email=req.session.email
     next()
 })
+app.use(routes)
+
 
 
 //connecting
