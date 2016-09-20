@@ -7,16 +7,18 @@ const routes = require('./routes/')
 const connect =require('./database').connect
 
 const app=express()
-app.use(routes)
+
 app.set('view engine',"pug")
 const port = process.env.PORT || 3000
 app.set('port', port)
 
 //middlewares
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(session({
   store:new RedisStore(),
   secret:'heyitsmeurbrother'
 }))
+app.use(routes)
 
 app.use((req,res,next)=>{
     app.locals.email=req.session.email
@@ -24,6 +26,7 @@ app.use((req,res,next)=>{
 })
 
 
+//connecting
 connect().then(()=>{
   app.listen(port, () =>{
      console.log(`Listening on port: ${port}`)

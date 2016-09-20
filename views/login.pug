@@ -1,12 +1,15 @@
 h1 login
-
-form(method="POST")
-	.form-group
-		label(for="email") Email Address
-		input.form-control#email(type="email" name="email" placeholder="you@example.com")
-	.form-group
-		label(for="password") Password
-		input.form-control#password(type="password" name="password" placeholder="password")
-	a(href="/register")
-		button(type="button") Register
-	button(type="submit" value="login") Login
+if msg
+	p #{msg}
+.login
+	form(method="POST")
+		.form-group
+			label(for="email") Email Address
+			input.form-control#email(type="email" name="email" placeholder="you@example.com")
+		.form-group
+			label(for="password") Password
+			input.form-control#password(type="password" name="password" placeholder="password")
+		.login__submit
+			a(href="/register")
+				button(type="button") Register
+			button(type="submit" value="login") Login
