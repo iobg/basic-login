@@ -31,7 +31,6 @@ router.post('/register',(req,res)=>{
 					resolve(hash)
 					})
 				}).then(res.render('Register', {msg:"User Successfully Registered"}))
-				.catch(err=>res.render(err))
 			}
 		})
 	}
