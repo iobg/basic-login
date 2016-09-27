@@ -15,7 +15,9 @@ app.set('port', port)
 //middlewares
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(session({
-  store:new RedisStore(),
+  store:new RedisStore({
+  	url:process.env.REDIS_URL || 'redis://localhost:6379'
+  }),
   secret:'supersecretcode'
 }))
 app.use((req,res,next)=>{
