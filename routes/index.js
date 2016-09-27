@@ -26,11 +26,12 @@ router.post('/register',(req,res)=>{
 			}
 			else{
 				return new Promise((resolve,reject)=>{
-					bcrypt.hash(req.body.password,13,(err,hash)=>{
+					bcrypt.hash(req.body.password,12,(err,hash)=>{
 					User.create({email:req.body.email,password:hash})
 					resolve(hash)
 					})
 				}).then(res.render('Register', {msg:"User Successfully Registered"}))
+				.catch(err=>res.render(err))
 			}
 		})
 	}
