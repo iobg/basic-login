@@ -16,7 +16,7 @@ app.set('port', port)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(session({
   store:new RedisStore(),
-  secret:'heyitsmeurbrother'
+  secret:'supersecretcode'
 }))
 app.use((req,res,next)=>{
     app.locals.email=req.session.email

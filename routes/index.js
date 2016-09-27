@@ -12,6 +12,10 @@ router.get('/login',(req,res)=>{
 router.get('/register',(req,res)=>{
 	res.render('register')
 })
+router.get('/logout',(req,res)=>{
+	req.session.destroy();
+	res.redirect('/')
+})
 
 router.post('/register',(req,res)=>{
 	if(req.body.password === req.body.passwordConfirm){
