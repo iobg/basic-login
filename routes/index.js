@@ -30,7 +30,7 @@ router.post('/register',(req,res)=>{
 					User.create({email:req.body.email,password:hash})
 					resolve(hash)
 					})
-				}).then(res.render('Register', {msg:"User Successfully Registered"}))
+				}).then(res.render('register', {msg:"User Successfully Registered"}))
 			}
 		})
 	}
